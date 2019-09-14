@@ -55,13 +55,12 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="index.php">Home</a></li>
+      <li><a href="index.php">Home</a></li>
         <li class="active"><a href="result.php">Results</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="faculties.php">Faculties</a></li>
+        <li><a href="news.php">News</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="admin/"><span class="glyphicon glyphicon-log-in"></span> Admin</a></li>
       </ul>
     </div>
   </div>

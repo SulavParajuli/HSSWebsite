@@ -60,10 +60,8 @@
         <li><a href="result.php">Results</a></li>
         <li><a href="faculties.php">Faculties</a></li>
         <li><a href="news.php">News</a></li>
-        <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="admin/"><span class="glyphicon glyphicon-log-in"></span> Admin</a></li>
       </ul>
     </div>
   </div>

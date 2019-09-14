@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <script src="script/script.js"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -56,14 +55,12 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li><a href="result.php">Results</a></li>
         <li><a href="faculties.php">Faculties</a></li>
         <li class="active"><a href="news.php">News</a></li>
-        <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="admin/"><span class="glyphicon glyphicon-log-in"></span> Admin</a></li>
       </ul>
     </div>
   </div>
@@ -73,14 +70,48 @@
   <div class="row content">
     <div class="col-sm-2 sidenav"></div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome</h1>
-      <p>The Admin Panel for customizing Database.</p>
+      <h1>Actions</h1>
+      <p>You can CRUD Database.</p>
+      <a href="addnews.php">Add New</a>
+    <table class='table table-bordered '>
+    <tr>
+        <th>Date</th>
+        <th>News</th>
+        <th>Action</th>
+    </tr>
+    <?php  
+    include('../db.php');
+    if ($conn->connect_error) {
+        echo 'Problem Connecting to the Database';
+        } 
+        else {
+        $sql = "SELECT date,news,id  FROM news";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $id = $row["id"];
+                $news = $row["news"];
+                $dat = $row["date"];
+                ?>
+            <tr>
+                <td><?php echo $news;?></td>
+                <td><?php echo $dat;?></td>
+                <td> <a href="deletenews.php?id=<?php echo $id;?>"> Delete</a>
+                </td>
+            </tr>
+                <?php
+        }
+    }
+    }
+        ?>
+    </table>
       <hr>
       <h3>Test</h3>
       <p>Lorem ipsum...</p>
     </div>
     <div class="col-sm-2 sidenav">
-        
+         
     </div>
   </div>
 </div>

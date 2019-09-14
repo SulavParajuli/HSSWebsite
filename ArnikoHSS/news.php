@@ -58,9 +58,7 @@
       <ul class="nav navbar-nav">
         <li><a href="index.php">Home</a></li>
         <li><a href="faculties.php">Faculties</a></li>
-        <li><a href="about.php">About</a></li>
         <li class="active"><a href="news.php">News</a></li>
-        <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="admin/"><span class="glyphicon glyphicon-log-in"></span> Admin</a></li>
@@ -76,8 +74,29 @@
       <h1>News</h1>
       <p>We are Arnikians From Biratnagar</p>
       <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
+      <?php  
+    include('db.php');
+    if ($conn->connect_error) {
+        echo 'Problem Connecting to the Database';
+        } 
+        else {
+        $sql = "SELECT news,date  FROM news";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $news = $row["news"];
+                $dat = $row["date"];
+                ?>
+                <h3><?php echo $dat;?></h3>
+                 <p><?php echo $news;?></p>
+                <hr>
+                <?php
+        }
+    }
+    }
+        ?>
+      
     </div>
     <div class="col-sm-2 sidenav">
          <h1>Check Your Result here!!</h1>

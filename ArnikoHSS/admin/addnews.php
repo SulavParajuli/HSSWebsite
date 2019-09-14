@@ -55,10 +55,10 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="index.php">Home</a></li>
-        <li class="active"><a href="result.php">Results</a></li>
+      <li><a href="index.php">Home</a></li>
+        <li><a href="result.php">Results</a></li>
         <li><a href="faculties.php">Faculties</a></li>
-        <li><a href="#">Contact</a></li>
+        <li  class="active"><a href="news.php">News</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       </ul>
@@ -70,49 +70,13 @@
   <div class="row content">
     <div class="col-sm-2 sidenav"></div>
     <div class="col-sm-8 text-left"> 
-      <h1>Actions</h1>
-      <p>You can CRUD Database.</p>
-      <a href="addnew.php">Add New</a>
-    <table class='table table-bordered '>
-    <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Action</th>
-    </tr>
-    <?php  
-    include('../db.php');
-    if ($conn->connect_error) {
-        echo 'Problem Connecting to the Database';
-        } 
-        else {
-        $sql = "SELECT name,email,phone,id  FROM result";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-                $id = $row["id"];
-                $name = $row["name"];
-                $email = $row["email"];
-                $phone = $row['phone'];
-                ?>
-            <tr>
-                <td><?php echo $name;?></td>
-                <td><?php echo $email;?></td>
-                <td><?php echo $email;?></td>
-                <td> <a href="delete.php?symbol=<?php echo $symbol;?>"> Delete</a>
-                <br><a href="edit.php?symbol=<?php echo $symbol;?>"> Edit</a>
-                </td>
-            </tr>
-                <?php
-        }
-    }
-    }
-        ?>
-    </table>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
+      <h3>Add New Record</h3>
+      <p>Add new results  record</p>
+      <form action="addnewsrey.php" method="get">
+            News:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="news"><br><br>
+            Date:  <input type="date" name="date"><br><br>
+            <input type="submit" value="Submit">
+        </form>
     </div>
     <div class="col-sm-2 sidenav">
          
